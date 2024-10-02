@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+  --primary-color:#31241e;
+  --secondary-color:#86654b;
+  --tertiary-color:#d1c8c1;
+  --background-color: #f6f4f3;
+
+  --primary-font: "Roboto", sans-serif;
+  --secondary-font: "Playfair Display", serif;
+}
+
+
+html{
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*, *::before, *:after {
+  box-sizing: inherit;
+}
+
+body{
+  /* background: linear-gradient(to left, #d0a3d1, #ffffff);background: linear-gradient(to right, #d0a3d1, #ffffff); */
+  background: var(--background-color);
+
+  margin: 0 auto;
+  font-size: 1.6rem;
+  line-height: 1.8;
+  font-family: var(--primary-font);
+
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+

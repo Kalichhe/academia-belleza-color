@@ -1,0 +1,64 @@
+.container{
+  margin: 0 auto;
+  margin-top: 3rem;
+  max-width: 80%;
+}
+
+.nav{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.nav__title{
+  display: flex;
+  align-items: center;
+}
+
+.icono{
+  width: 45px;
+  height: 35px;
+}
+
+.title{
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  font-family: var(--secondary-font);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.nav__elements{
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.element{
+  text-decoration: none;
+  font-size: 15px;
+  margin: 0.5rem 2rem;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.element:hover{
+  transform: scale(1.2);
+  color: var(--secondary-color);
+}
+
+hr {
+  background-color: var(--secondary-color);
+  border: none; /* Asegúrate de que no haya borde */
+  height: 1.5px; /* Ajusta el grosor de la línea */
+}
+
+.active {
+  color: var(--secondary-color); /* Cambia el color del enlace activo */
+  font-weight: bold; /* Opcional: puedes agregar más estilos para el enlace activo */
+}

@@ -1,0 +1,79 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100%); /* Opcional: mueve el footer hacia arriba */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) /* Opcional: mueve el footer a su posición original */
+  }
+}
+
+.footer{
+  background-color: pink;
+  color: rgb(75, 74, 74);
+  text-transform: uppercase;
+  font-family: var(--fuentePrincipal);
+  padding: 1rem 0;
+
+}
+
+
+.items-footer a{
+  text-decoration: none;
+  color: black;
+  margin-left: 10px;
+  font-size: 25px;
+}
+
+.principal-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 13px;
+  width: 70%;
+  margin: 0 160px;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.principal-footer.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contacto-footer p{
+  margin: 5px;
+
+}
+
+.contacto-footer div + p {
+  font-weight: bold;
+  color: black;
+
+}
+.principal-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 13px;
+  width: 90%;
+  margin: 40px auto;
+}
+
+.contacto-footer p{
+  margin: 10px;
+}
+
+.politicas-footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+
+
+
+
