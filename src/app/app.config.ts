@@ -4,7 +4,21 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideFirebaseApp(() => initializeApp({"projectId":"arte-y-color","appId":"1:613464503560:web:2951ebaa047b107fdee8bd","storageBucket":"arte-y-color.appspot.com","apiKey":"AIzaSyAo4wgMtfuwQb21n9eTHRTUV-pXuxhQ224","authDomain":"arte-y-color.firebaseapp.com","messagingSenderId":"613464503560","measurementId":"G-KLYHTRLXPQ"})), provideFirestore(() => getFirestore()), provideFirebaseApp(() => initializeApp({"projectId":"arte-y-color","appId":"1:613464503560:web:fa80600bf3fff492dee8bd","storageBucket":"arte-y-color.appspot.com","apiKey":"AIzaSyAo4wgMtfuwQb21n9eTHRTUV-pXuxhQ224","authDomain":"arte-y-color.firebaseapp.com","messagingSenderId":"613464503560","measurementId":"G-NGHZZ7SMKG"})), provideFirestore(() => getFirestore()), provideFirebaseApp(() => initializeApp({"projectId":"arte-y-color","appId":"1:613464503560:web:fe11938dd7c33c83dee8bd","storageBucket":"arte-y-color.appspot.com","apiKey":"AIzaSyAo4wgMtfuwQb21n9eTHRTUV-pXuxhQ224","authDomain":"arte-y-color.firebaseapp.com","messagingSenderId":"613464503560","measurementId":"G-D43EDGR3N8"})), provideFirestore(() => getFirestore()), provideFirebaseApp(() => initializeApp({"projectId":"arte-y-color","appId":"1:613464503560:web:1b138f9ac649a5eadee8bd","storageBucket":"arte-y-color.appspot.com","apiKey":"AIzaSyAo4wgMtfuwQb21n9eTHRTUV-pXuxhQ224","authDomain":"arte-y-color.firebaseapp.com","messagingSenderId":"613464503560","measurementId":"G-BW4NS50W6C"})), provideFirestore(() => getFirestore())]
+    providers: [provideZoneChangeDetection({ eventCoalescing: true }),
+      provideRouter(routes),
+      provideFirebaseApp(() =>
+      initializeApp({"projectId":"arte-color-362b0",
+        "appId":"1:769925213769:web:4066a9e292de8bee069998",
+        "storageBucket":"arte-color-362b0.appspot.com",
+        "apiKey":"AIzaSyCrYT8d6T9C16NRiq-YALYbE6D1cm-oU4I",
+        "authDomain":"arte-color-362b0.firebaseapp.com",
+        "messagingSenderId":"769925213769"
+      })
+    ),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
+  ],
 };

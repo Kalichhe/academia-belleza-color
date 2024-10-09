@@ -44,3 +44,8 @@
   font-weight: 300;
   font-family: var(--secondary-font);
 }
+
+.small{
+  font-size: 3px;
+  color: rgb(167, 79, 79);
+}

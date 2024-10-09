@@ -1,0 +1,57 @@
+
+
+<h1 class="title">
+  Formulario Prematricula
+</h1>
+
+
+<form class="formulario" [formGroup]="form" (ngSubmit)="submit()" action="#">
+  <div class="data">
+    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+    <input type="text" name="name" id="name" placeholder="Nombre" class="input" formControlName="name">
+    @if(isRequiredForm("name")){
+      <small class="small">Este campo es requerido</small>
+    }
+  </div>
+  <div class="data">
+    <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
+    <input type="text" name="lastName" id="lastName" placeholder="Apellido" class="input" formControlName="lastName">
+    @if(isRequiredForm("lastName")){
+      <small class="small">Este campo es requerido</small>
+    }
+  </div>
+  <div class="data">
+    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Celular</label>
+    <input type="tel" name="phone" id="phone" class="input" placeholder="+57" formControlName="phone">
+    @if(isRequiredForm("phone")){
+      <small class="small">Este campo es requerido</small>
+    }
+  </div>
+  <div class="data">
+    <label for="minicipio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona su Municipio</label>
+    <select name="minicipio" id="minicipio" class="input" formControlName="municipio">
+      <option value="opcion1">Jardin</option>
+      <option value="opcion2">Don Matias</option>
+      <option value="opcion3">Jerico</option>
+      <option value="opcion4">Rio Negro</option>
+    </select>
+    @if(isRequiredForm("municipio")){
+      <small class="small">Este campo es requerido</small>
+    }
+  </div>
+  <div class="data">
+    <label for="curso" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona el curso de interes</label>
+    <select name="curso" id="curso" class="input" formControlName="curso">
+      <option value="opcion1">Maquillaje Profesional</option>
+      <option value="opcion2">Cejas y Pestañas</option>
+      <option value="opcion3">Acrílico Basico</option>
+      <option value="opcion4">Acrílico Avanzado</option>
+    </select>
+    @if(isRequiredForm("curso")){
+      <small class="small">Este campo es requerido</small>
+    }
+  </div>
+  <div class="button-contend">
+    <button [disabled]="loading()" type="submit" class="button">{{loading()?"Guardando...":"Guardar"}}</button>
+  </div>
+</form>

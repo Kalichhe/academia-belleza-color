@@ -76,3 +76,13 @@ img{
 .proximamente{
   margin-bottom: 5rem;
 }
+
+.carousel-contend{
+  max-width: 30%;
+  margin: 0 auto;
+}
+
+.carousel-item img {
+  object-fit: contain;
+  max-height: 70vh;
+}

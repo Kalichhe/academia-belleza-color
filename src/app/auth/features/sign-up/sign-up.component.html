@@ -1,0 +1,57 @@
+
+<section class="contenedor">
+  <div class="login">
+      <div class="login__imagen">
+        <img src="./assets/icono_arte.png" alt="">
+      </div>
+      <div class="login__informacion">
+        <div class="formulario">
+            <h1 class="formulario__titulo">
+                Crear Usuario
+            </h1>
+            <div class="btn-google">
+              <app-google-button (onClick)="submitWithGoogle()"/>
+            </div>
+
+            <form class="formulario__texto" [formGroup]="form" (ngSubmit)="submit()" action="#">
+                <div class="data">
+                  <label for="fullName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre Completo</label>
+                  <input type="text" name="fullName" id="fullName" placeholder="Nombre" class="input" formControlName="fullName">
+                  @if(isRequired("fullName")){
+                    <small class="small">Este campo es requerido</small>
+                  }
+                </div>
+                <div class="data">
+                  <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                  <input type="email" name="email" id="email" class="input" placeholder="correo@gmail.com" formControlName="email">
+                  @if(isRequired("email")){
+                    <small class="small">Este campo es requerido</small>
+                  } @if(hasEmailError()){
+                    <small class="small">El correo debe ser Valido</small>
+                  }
+                </div>
+                <div class="data">
+                  <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Celular</label>
+                  <input type="tel" name="phone" id="phone" class="input" placeholder="+57" formControlName="phone">
+                  @if(isRequired("phone")){
+                    <small class="small">Este campo es requerido</small>
+                  }
+                </div>
+                <div class="data">
+                  <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
+                  <input type="password" name="password" id="password" placeholder="••••••••" class="input" formControlName="password">
+                  @if(isRequired("password")){
+                    <small class="small">Este campo es requerido</small>
+                  }
+
+                </div>
+
+                <button type="submit" class="button">Crear cuenta</button>
+                <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                    Ya tienes una cuenta? <a routerLink="/auth/sign-in" class="sign-in">Iniciar sesion</a>
+                </p>
+            </form>
+        </div>
+    </div>
+  </div>
+</section>

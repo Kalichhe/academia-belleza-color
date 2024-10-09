@@ -1,5 +1,9 @@
+<ng-container *ngIf="!router.url.startsWith('/auth')">
+  <app-navigator></app-navigator>
+</ng-container>
 
-<app-navigator></app-navigator>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<router-outlet></router-outlet> <ngx-sonner-toaster/>
 
+<ng-container *ngIf="!isAuthOrInscripcionRoute()">
+  <app-footer></app-footer>
+</ng-container>

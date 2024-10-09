@@ -1,0 +1,23 @@
+.contenedor{
+  margin: 5rem 0;
+}
+
+
+.table{
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+.button{
+  display: flex;
+  justify-content: end;
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+button{
+  font-size: 15px;
+  padding: 3px 15px;
+  margin-bottom: 2rem;
+}
+

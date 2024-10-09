@@ -1,0 +1,23 @@
+button{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 7px 20px;
+  gap: 15px;
+}
+span{
+  font-size: 12px;
+  font-weight: bold;
+  color: gray;
+}
+
+button:hover{
+  background-color: rgb(209, 207, 207);
+  border: solid 1px black;
+}
+
+button:hover span {
+  color: black;
+}
