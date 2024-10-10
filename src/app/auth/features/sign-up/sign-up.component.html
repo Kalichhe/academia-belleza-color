@@ -14,13 +14,28 @@
             </div>
 
             <form class="formulario__texto" [formGroup]="form" (ngSubmit)="submit()" action="#">
-                <div class="data">
-                  <label for="fullName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre Completo</label>
-                  <input type="text" name="fullName" id="fullName" placeholder="Nombre" class="input" formControlName="fullName">
-                  @if(isRequired("fullName")){
+                <!-- <div class="data">
+                  <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                  <input type="text" name="name" id="name" placeholder="tu nombre" class="input" formControlName="name">
+                  @if(isRequired("name")){
                     <small class="small">Este campo es requerido</small>
                   }
                 </div>
+                <div class="data">
+                  <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
+                  <input type="text" name="lastName" id="lastName" placeholder="tu apellido" class="input" formControlName="lastName">
+                  @if(isRequired("lastName")){
+                    <small class="small">Este campo es requerido</small>
+                  }
+                </div>
+                <div class="data">
+                  <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Celular</label>
+                  <input type="tel" name="phone" id="phone" placeholder="tu apellido" class="input" formControlName="phone">
+                  @if(isRequired("phone")){
+                    <small class="small">Este campo es requerido</small>
+                  }
+                </div> -->
+
                 <div class="data">
                   <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                   <input type="email" name="email" id="email" class="input" placeholder="correo@gmail.com" formControlName="email">
@@ -31,25 +46,26 @@
                   }
                 </div>
                 <div class="data">
-                  <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Celular</label>
-                  <input type="tel" name="phone" id="phone" class="input" placeholder="+57" formControlName="phone">
-                  @if(isRequired("phone")){
-                    <small class="small">Este campo es requerido</small>
-                  }
-                </div>
-                <div class="data">
                   <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
                   <input type="password" name="password" id="password" placeholder="••••••••" class="input" formControlName="password">
                   @if(isRequired("password")){
                     <small class="small">Este campo es requerido</small>
                   }
-
+                </div>
+                <div class="data">
+                  <label for="confirmPassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
+                  <input type="password" name="confirmPassword" id="confirmPassword" placeholder="••••••••" class="input" formControlName="confirmPassword">
+                  @if(isRequired("password")){
+                    <small class="small">Este campo es requerido</small>
+                  }
+                  <small *ngIf="form.errors?.['passwordsMismatch'] && form.get('confirmPassword')?.touched" class="small">Passwords do not match</small>
                 </div>
 
                 <button type="submit" class="button">Crear cuenta</button>
                 <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                     Ya tienes una cuenta? <a routerLink="/auth/sign-in" class="sign-in">Iniciar sesion</a>
                 </p>
+
             </form>
         </div>
     </div>

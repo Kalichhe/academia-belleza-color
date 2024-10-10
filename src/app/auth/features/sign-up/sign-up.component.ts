@@ -1,25 +1,27 @@
-import { initializeApp } from '@angular/fire/app';
+  import { initializeApp } from '@angular/fire/app';
 import { isRequired,hasEmailError } from '../../utils/validators';
 import { Component, inject, ViewEncapsulation  } from '@angular/core';
-import {FormBuilder, FormControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms'
+import {AbstractControl, FormBuilder, FormControl, NonNullableFormBuilder, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms'
 import { AuthService } from '../../data-access/auth.service';
 import { toast } from 'ngx-sonner';
 import { Router, RouterLink } from '@angular/router';
 import { GoogleButtonComponent } from '../../ui/google-button/google-button.component';
+import { CommonModule } from '@angular/common';
 
 
 interface FormSignUp{
-  fullName:FormControl<string|null>;
   email:FormControl<string|null>;
-  phone:FormControl<string|null>;
   password:FormControl<string|null>;
+  confirmPassword: FormControl<string | null>;
+  // fullName: FormControl<string | null>;
+  // phone: FormControl<string | null>;
 }
 
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [ReactiveFormsModule,RouterLink, GoogleButtonComponent],
+  imports: [ReactiveFormsModule,RouterLink, GoogleButtonComponent, CommonModule],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css',
   encapsulation: ViewEncapsulation.None
@@ -38,11 +40,17 @@ export default class SignUpComponent {
   }
 
   form = this._formBuilder.group<FormSignUp>({
-    fullName: this._formBuilder.control('',Validators.required),
     email: this._formBuilder.control('',[Validators.required,Validators.email]),
-    phone: this._formBuilder.control('',[Validators.required]),
-    password: this._formBuilder.control('',[Validators.required])
-  });
+    password: this._formBuilder.control('',[Validators.required]),
+    confirmPassword: this._formBuilder.control('', [Validators.required])
+  }, { validators: this.passwordsMatchValidator });
+
+
+  passwordsMatchValidator(control: AbstractControl): ValidationErrors | null {
+    const password = control.get('password')?.value;
+    const confirmPassword = control.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { passwordsMismatch: true };
+  }
 
   async submit(){
     if(this.form.invalid) return;

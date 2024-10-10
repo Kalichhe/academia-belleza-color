@@ -4,15 +4,22 @@
       <th scope="col">ID</th>
       <th scope="col">CURSO</th>
       <th scope="col">MUNICIPIO</th>
-      <th scope="col"></th>
+      <th scope="col">ESTADO</th>
     </tr>
   </thead>
   <tbody class="table-group-divider">
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>mdo</td>
-    </tr>
+    @for(task of tasks();track task.id){
+      <tr>
+        <th scope="row">{{task.id}}</th>
+        <td>{{task.curso}}</td>
+        <td>{{task.municipio}}</td>
+        <td>Prematriculado</td>
+      </tr>
+    } @empty{
+      <tr>
+        <td>No te has inscripto a ningun curso</td>
+      </tr>
+    }
   </tbody>
 </table>
+

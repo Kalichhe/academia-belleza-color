@@ -8,7 +8,12 @@
 
   <div class="table">
     <a routerLink="/inscripcion/new" type="button" class="btn btn-success">Matriculate</a>
-    <app-table></app-table>
+    @if(tasksService.loading()){
+      <p>Cargando...</p>
+    }@else{
+      <app-table [tasks]="tasksService.getTasks()"/>
+    }
+
   </div>
 </section>
 
