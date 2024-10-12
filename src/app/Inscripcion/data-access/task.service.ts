@@ -5,12 +5,10 @@ import { catchError, Observable, tap, throwError} from 'rxjs';
 import { toSignal} from '@angular/core/rxjs-interop';
 import { AuthStateService } from '../../shared/data-access/auth-state.service';
 import { doc, updateDoc, query, where, getDoc} from 'firebase/firestore';
+import { AuthService } from '../../auth/data-access/auth.service';
 
 export interface Task {
   id: string;
-  name: string;
-  lastName: string;
-  phone: string;
   municipio: string;
   curso: string;
 }
@@ -22,7 +20,8 @@ const PATH = 'matriculas';
 @Injectable()
 export class TaskService {
   private _firestore = inject(Firestore);
-  private _authState = inject(AuthStateService)
+  private _authState = inject(AuthStateService);
+  private _authService = inject(AuthService);
 
   private _collection = collection(this._firestore, PATH);
 
@@ -37,21 +36,37 @@ export class TaskService {
     this._authState.currentUser;
   }
 
-  getTasks = toSignal((collectionData(this._query,{idField:'id'})as Observable<Task[]>).pipe(
-    tap(()=>{
-      this.loading.set(false)
-    }),
-    catchError(error =>{
-      this.loading.set(false);
-      return throwError(()=> error)
-    })
-  ), {initialValue:[]});
+  getTasks = toSignal(
+    (collectionData(query(this._collection, where('userId', '==', this._authService.getUserId())), { idField: 'id' }) as Observable<Task[]>).pipe(
+      tap(() => {
+        this.loading.set(false);
+      }),
+      catchError((error) => {
+        this.loading.set(false);
+        return throwError(() => error);
+      })
+    ),
+    { initialValue: [] }
+  );
 
-  create(task: TaskCreate){
+  // create(task: TaskCreate){
+  //   return addDoc(this._collection, {
+  //     ...task,
+  //     userId: this._authState.currentUser?.uid,
+  //   })
+  // }
+
+  create(task: { municipio: string; curso: string }) {
+    const userId = this._authService.getUserId(); // Obtener el UID del usuario autenticado
+    if (!userId) {
+      throw new Error('No hay un usuario autenticado.');
+    }
+
+    // Solo guardamos municipio y curso, y asociamos el userId
     return addDoc(this._collection, {
       ...task,
-      userId: this._authState.currentUser?.uid,
-    })
+      userId, // Asociamos la matrícula al userId del usuario autenticado
+    });
   }
 
   getTask(id: string){

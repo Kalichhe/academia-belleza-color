@@ -7,27 +7,6 @@
 
 <form class="formulario" [formGroup]="form" (ngSubmit)="submit()" action="#">
   <div class="data">
-    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-    <input type="text" name="name" id="name" placeholder="Nombre" class="input" formControlName="name">
-    @if(isRequiredForm("name")){
-      <small class="small">Este campo es requerido</small>
-    }
-  </div>
-  <div class="data">
-    <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
-    <input type="text" name="lastName" id="lastName" placeholder="Apellido" class="input" formControlName="lastName">
-    @if(isRequiredForm("lastName")){
-      <small class="small">Este campo es requerido</small>
-    }
-  </div>
-  <div class="data">
-    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Celular</label>
-    <input type="tel" name="phone" id="phone" class="input" placeholder="+57" formControlName="phone">
-    @if(isRequiredForm("phone")){
-      <small class="small">Este campo es requerido</small>
-    }
-  </div>
-  <div class="data">
     <label for="minicipio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona su Municipio</label>
     <select name="minicipio" id="minicipio" class="input" formControlName="municipio">
       <option value="Jardin">Jardin</option>

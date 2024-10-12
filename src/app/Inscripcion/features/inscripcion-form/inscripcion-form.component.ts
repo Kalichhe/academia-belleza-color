@@ -18,7 +18,7 @@ export default class InscripcionFormComponent{
   private _taskService = inject(TaskService);
   private _router = inject(Router);
 
-  isRequiredForm(field:'name'|'lastName'| 'phone'|'municipio'|'curso'){
+  isRequiredForm(field:'municipio'|'curso'){
     return isRequiredForm(field, this.form);
   }
 
@@ -27,12 +27,8 @@ export default class InscripcionFormComponent{
   idTask = input.required<string>();
 
   form = this._formBuilder.group({
-    name: this._formBuilder.control('', Validators.required),
-    lastName: this._formBuilder.control('', Validators.required),
-    phone: this._formBuilder.control('', Validators.required),
     municipio: this._formBuilder.control('', Validators.required),
     curso: this._formBuilder.control('', Validators.required),
-
   });
 
   constructor()  {
@@ -50,11 +46,9 @@ export default class InscripcionFormComponent{
     if (this.form.invalid) return;
     try {
       this.loading.set(true);
-      const { name, lastName, phone, municipio, curso} = this.form.value;
+      const { municipio, curso} = this.form.value;
       const task: TaskCreate = {
-        name: name|| '',
-        lastName: lastName|| '',
-        phone: phone||'',
+
         municipio: municipio||'',
         curso: curso||'',
       };
