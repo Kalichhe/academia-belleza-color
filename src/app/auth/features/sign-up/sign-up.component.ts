@@ -1,4 +1,4 @@
-  import { initializeApp } from '@angular/fire/app';
+
 import { isRequired,hasEmailError } from '../../utils/validators';
 import { Component, inject, ViewEncapsulation  } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, NonNullableFormBuilder, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms'
@@ -13,8 +13,9 @@ interface FormSignUp{
   email:FormControl<string|null>;
   password:FormControl<string|null>;
   confirmPassword: FormControl<string | null>;
-  // fullName: FormControl<string | null>;
-  // phone: FormControl<string | null>;
+  name: FormControl<string | null>;
+  lastName: FormControl<string | null>;
+  phone: FormControl<string | null>;
 }
 
 
@@ -31,7 +32,7 @@ export default class SignUpComponent {
   private _authService = inject(AuthService);
   private _router = inject(Router);
 
-  isRequired(field:'fullName'| 'email'|'phone'|'password'){
+  isRequired(field:'name'|'lastName'|'phone'| 'email'|'password'){
     return isRequired(field, this.form);
   }
 
@@ -42,7 +43,10 @@ export default class SignUpComponent {
   form = this._formBuilder.group<FormSignUp>({
     email: this._formBuilder.control('',[Validators.required,Validators.email]),
     password: this._formBuilder.control('',[Validators.required]),
-    confirmPassword: this._formBuilder.control('', [Validators.required])
+    confirmPassword: this._formBuilder.control('', [Validators.required]),
+    name: this._formBuilder.control('', [Validators.required]),
+    lastName: this._formBuilder.control('', [Validators.required]),
+    phone: this._formBuilder.control('', [Validators.required, Validators.minLength(10)]),
   }, { validators: this.passwordsMatchValidator });
 
 
@@ -55,11 +59,12 @@ export default class SignUpComponent {
   async submit(){
     if(this.form.invalid) return;
     try {
-      const {email,password}=this.form.value;
+      const { email, password, name, lastName, phone } = this.form.value;
 
-      if(!email || !password) return;
+      if (!email || !password || !name || !lastName || !phone) return;
 
-      await this._authService.signUp({email,password});
+      await this._authService.signUp({ email, password, name, lastName, phone});
+
       toast.success('Usuario creado correctamente');
       this._router.navigateByUrl('/inscripcion')
     } catch(error){

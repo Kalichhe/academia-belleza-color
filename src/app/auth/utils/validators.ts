@@ -1,6 +1,6 @@
 import { FormGroup } from "@angular/forms";
 
-export const isRequired = (field: 'fullName'| 'email'|'phone'|'password',form:FormGroup) => {
+export const isRequired = (field: 'name'| 'lastName' |'email'|'phone'|'password',form:FormGroup) => {
   const control = form.get(field);
   return control && control.touched && control.hasError('required');
 };

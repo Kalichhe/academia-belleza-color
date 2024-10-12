@@ -25,6 +25,7 @@ export class TaskService {
   private _authState = inject(AuthStateService)
 
   private _collection = collection(this._firestore, PATH);
+
   private _query = query(
     this._collection,
     where('userId','==', this._authState.currentUser?.uid)
