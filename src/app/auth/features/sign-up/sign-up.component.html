@@ -16,21 +16,21 @@
             <form class="formulario__texto" [formGroup]="form" (ngSubmit)="submit()" action="#">
                 <div class="data">
                   <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-                  <input type="text" name="name" id="name" placeholder="tu nombre" class="input" formControlName="name">
+                  <input type="text" name="name" id="name" placeholder="Nombre" class="input" formControlName="name">
                   @if(isRequired("name")){
                     <small class="small">Este campo es requerido</small>
                   }
                 </div>
                 <div class="data">
                   <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
-                  <input type="text" name="lastName" id="lastName" placeholder="tu apellido" class="input" formControlName="lastName">
+                  <input type="text" name="lastName" id="lastName" placeholder="Apellido" class="input" formControlName="lastName">
                   @if(isRequired("lastName")){
                     <small class="small">Este campo es requerido</small>
                   }
                 </div>
                 <div class="data">
                   <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Celular</label>
-                  <input type="tel" name="phone" id="phone" placeholder="tu apellido" class="input" formControlName="phone">
+                  <input type="tel" name="phone" id="phone" placeholder="Teléfono" class="input" formControlName="phone">
                   @if(isRequired("phone")){
                     <small class="small">Este campo es requerido</small>
                   }
